@@ -43,7 +43,6 @@ export class ExpandDirective implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this._link = document.createElement('a');
     this._link.classList.add('k-icon');
     this._link.classList.add('k-plus');
     this.renderer.listen(this._link, 'click', (event)  => {
