@@ -26,18 +26,20 @@ export class ExpandDirective implements AfterViewInit {
     for (let i = 0; i < this.grid.view.total; i++) {
       this.grid.collapseRow(i);
       this._areAllExpanded = false;
-      this._link.classList.remove('k-minus');
-      this._link.classList.add('k-plus');
     }
+
+    this._link.classList.remove('k-minus');
+    this._link.classList.add('k-plus');
   }
 
   private expandAll() {
     for (let i = 0; i < this.grid.view.total; i++) {
       this.grid.expandRow(i);
       this._areAllExpanded = true;
+    }
+
       this._link.classList.remove('k-plus');
       this._link.classList.add('k-minus');
-    }
   }
 
   ngAfterViewInit(): void {
