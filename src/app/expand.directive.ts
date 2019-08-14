@@ -5,13 +5,11 @@ import { GridComponent } from '@progress/kendo-angular-grid';
   selector: '[appExpand]'
 })
 export class ExpandDirective implements AfterViewInit {
-  private _elementRef: ElementRef;
   private _areAllExpanded = false;
   private _link: HTMLElement;
   @ContentChild(GridComponent) grid: GridComponent;
 
-  constructor(elementRef: ElementRef, private renderer: Renderer2) {
-    this._elementRef = elementRef;
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
   }
 
   private expandAllDetails() {
@@ -52,7 +50,7 @@ export class ExpandDirective implements AfterViewInit {
     });
 
     this.renderer.setAttribute(this._link, 'href', '#');
-    const el = this._elementRef.nativeElement.querySelector('.k-hierarchy-cell');
+    const el = this.elementRef.nativeElement.querySelector('.k-hierarchy-cell');
     el.appendChild(this._link);
     this.grid.pageChange.subscribe(() => {
       this._areAllExpanded = false;
