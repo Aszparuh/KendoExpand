@@ -28,8 +28,8 @@ export class ExpandDirective implements AfterViewInit {
       this._areAllExpanded = false;
     }
 
-    this._link.classList.remove('k-minus');
-    this._link.classList.add('k-plus');
+    this.renderer.removeClass(this._link, 'k-minus');
+    this.renderer.addClass(this._link, 'k-plus');
   }
 
   private expandAll() {
@@ -38,14 +38,15 @@ export class ExpandDirective implements AfterViewInit {
       this._areAllExpanded = true;
     }
 
-      this._link.classList.remove('k-plus');
-      this._link.classList.add('k-minus');
+    this.renderer.removeClass(this._link, 'k-plus');
+    this.renderer.addClass(this._link, 'k-minus');
   }
 
   ngAfterViewInit(): void {
     this._link = this.renderer.createElement('a');
-    this._link.classList.add('k-icon');
-    this._link.classList.add('k-plus');
+    this._link.style.boxShadow = '0 0 0 0';
+    this.renderer.addClass(this._link, 'k-icon');
+    this.renderer.addClass(this._link, 'k-plus');
     this.renderer.listen(this._link, 'click', (event)  => {
       this.expandAllDetails();
     });
