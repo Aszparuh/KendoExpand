@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Renderer2, ContentChild, AfterViewInit } from '@angular/core';
-import { GridComponent, PageChangeEvent } from '@progress/kendo-angular-grid';
+import { GridComponent } from '@progress/kendo-angular-grid';
 
 @Directive({
   selector: '[appExpand]'
@@ -7,7 +7,7 @@ import { GridComponent, PageChangeEvent } from '@progress/kendo-angular-grid';
 export class ExpandDirective implements AfterViewInit {
   private _elementRef: ElementRef;
   private _areAllExpanded = false;
-  private _link = document.createElement('a');
+  private _link: HTMLElement;
   @ContentChild(GridComponent) grid: GridComponent;
 
   constructor(elementRef: ElementRef, private renderer: Renderer2) {
@@ -43,13 +43,14 @@ export class ExpandDirective implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this._link = this.renderer.createElement('a');
     this._link.classList.add('k-icon');
     this._link.classList.add('k-plus');
     this.renderer.listen(this._link, 'click', (event)  => {
       this.expandAllDetails();
     });
 
-    this._link.href = '#';
+    this.renderer.setAttribute(this._link, 'href', '#');
     const el = this._elementRef.nativeElement.querySelector('.k-hierarchy-cell');
     el.appendChild(this._link);
     this.grid.pageChange.subscribe(() => {
