@@ -33,9 +33,9 @@ export class ExpandDirective implements AfterViewInit {
   private expandAll() {
     for (let i = 0; i < this.grid.view.total; i++) {
       this.grid.expandRow(i);
-      this._areAllExpanded = true;
     }
 
+    this._areAllExpanded = true;
     this.renderer.removeClass(this._link, 'k-plus');
     this.renderer.addClass(this._link, 'k-minus');
   }
