@@ -1,7 +1,7 @@
 <h1>
   {{title}}
 </h1>
-<kendo-grid appExpand [data]="gridView" [selectable]="false" [pageSize]="pageSize" [skip]="skip" [pageable]="true" [height]="800"
+<kendo-grid smsHandleDetailGridCollapseAll [data]="gridView" [selectable]="false" [pageSize]="pageSize" [skip]="skip" [pageable]="true" [height]="800"
   (pageChange)="pageChange($event)">
   <kendo-grid-column field="ProductName" title="Product" [width]="300"></kendo-grid-column>
   <kendo-grid-column field="ProductID" title="ID" [width]="50"></kendo-grid-column>

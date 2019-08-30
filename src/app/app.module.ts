@@ -5,14 +5,13 @@ import { AppComponent } from './app.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ExpandDirective } from './expand.directive';
-
+import { DetailGridCollapseAllDirective } from './DetailGridCollapseAllDirective';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExpandDirective
+    DetailGridCollapseAllDirective
   ],
   imports: [
     BrowserModule,
