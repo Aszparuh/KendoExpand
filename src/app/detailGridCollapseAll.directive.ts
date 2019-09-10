@@ -39,7 +39,7 @@ export class DetailGridCollapseAllDirective implements AfterViewInit, OnInit, On
     this._pageChangeSubscription.unsubscribe();
   }
 
-  private expandAllDetails() {
+  public expandAllDetails() {
     if (this._areAllExpanded) {
       this.collapseAll();
     } else {
